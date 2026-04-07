@@ -4,10 +4,14 @@ const Pagination = () => {
 
     const [images, setImages] = useState([])
     const [pageNo, setPageNo] = useState(1)
+    const [isLoading, setIsLoading] = useState(false)
+
     const getImages = async() => {
+       setIsLoading(true)
         const response = await fetch(`https://picsum.photos/v2/list?page=${pageNo}&limit=5`)
         const jsonData = await response.json()
         setImages(jsonData)
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -27,6 +31,11 @@ const Pagination = () => {
     <>
       <div>
         <h2 className="title">Image Gallery Pagination</h2>
+        {isLoading && (
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
+        )}
         <div className="image-container">
           {images.map((image, index) => (
             <img key={index} src={image.download_url} alt={`Image ${index}`} />
