@@ -29,13 +29,15 @@ const Pagination = () => {
 
   return (
     <>
-      <div>
+      <div className="app-container">
         <h2 className="title">Image Gallery Pagination</h2>
+
         {isLoading && (
           <div className="loader-container">
             <div className="loader"></div>
           </div>
         )}
+
         <div className="image-container">
           {images.map((image, index) => (
             <img key={index} src={image.download_url} alt={`Image ${index}`} />
@@ -57,6 +59,19 @@ const Pagination = () => {
           ))}
           <button onClick={() => setPageNo(pageNo + 1)}>Next</button>
         </div>
+
+        <footer className="footer">
+          <p>
+            © 2026 Image Gallery. Designed by{" "}
+            <a
+              href="https://github.com/mqkhan125"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              M Qasim Khan
+            </a>
+          </p>
+        </footer>
       </div>
     </>
   );

@@ -1,23 +1,30 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full height of viewport */
+}
+
 .image-container {
+  flex: 1; 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
   padding: 20px;
-}
+}  
 
 .title {
   text-align: center;
   font-size: 28px;
   font-weight: 600;
-  margin-top: 20px;
+  margin-top: 80px;
   color: #1e1e2f;
   letter-spacing: 1px;
 }
 
 img {
-  width: 150px;
-  height: 170px;
+  width: 170px;
+  height: 190px;
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -31,10 +38,9 @@ img:hover {
 .buttons {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 button {
@@ -98,4 +104,28 @@ button:disabled {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #1e1e2f;
+  color: #ffffff;
+  font-size: 14px;
+  border-top: 1px solid #4f46e5;
+}
+
+.footer a {
+  color: #4f46e5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: #ffffff;
 }
