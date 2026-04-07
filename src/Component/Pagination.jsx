@@ -3,19 +3,25 @@ import React, { useEffect, useState } from 'react'
 const Pagination = () => {
 
     const [images, setImages] = useState([])
-    const [page, setPage] = useState(1)
+    const [pageNo, setPageNo] = useState(1)
     const getImages = async() => {
-        const response = await fetch(`https://picsum.photos/v2/list?page=${page}1&limit=5`)
+        const response = await fetch(`https://picsum.photos/v2/list?page=${pageNo}&limit=5`)
         const jsonData = await response.json()
         setImages(jsonData)
     }
 
     useEffect(() => {
        getImages()
-    },[page])
+    },[pageNo])
 
+    const nextButtons = Array.from({length: 4}, (_, index) => pageNo+index)
+    console.log(nextButtons)
 
-    
+    const prevButtons = Array.from({length: 3}, (_, index) => pageNo-1-index).filter((value) => value > 0).reverse()
+    console.log(prevButtons)
+
+    const margedButtons = [...prevButtons, ...nextButtons]
+    console.log(margedButtons)
 
   return (
     <>
@@ -27,9 +33,16 @@ const Pagination = () => {
         </div>
 
         <div className="buttons">
-          <button onClick={() => setPage(page - 1)} disabled= {page === 1}> Prev </button>
-          <button>{page}</button>
-          <button onClick={() => setPage(page + 1)}>Next</button>
+          <button onClick={() => setPageNo(pageNo - 1)} disabled={pageNo === 1}>
+            {" "}
+            Prev{" "}
+          </button>
+          {margedButtons.map((currentButton) => (
+            <button onClick={() => setPageNo(currentButton)} key={currentButton} className={currentButton === pageNo ? "active" : ""}>
+              {currentButton}
+            </button>
+          ))}
+          <button onClick={() => setPageNo(pageNo + 1)}>Next</button>
         </div>
       </div>
     </>
