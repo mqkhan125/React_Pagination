@@ -1,59 +1,77 @@
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
 
-.image-container{
+.title {
   text-align: center;
-
-}
-img{
-  margin: 11px;
-  width: 130px;
-  height: 160px;
-  border-radius: 5px;
-}
-.buttons{
-  text-align: center;
-  
-}
-button{
-  width: 50px;
-  height: 40px;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  margin: 11px;
-  cursor: pointer;
-}
-.active{
-  background-color: #fff;
-  color: black;
-  border: 1px solid black;
-}
-.preBtn{
-  width: 80px;
-  height: 40px;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  margin: 11px;
-  cursor: pointer;
-}
-.nextBtn{
-  width: 80px;
-  height: 40px;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  margin: 11px;
-  cursor: pointer;
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #1e1e2f;
+  letter-spacing: 1px;
 }
 
-:disabled{
-  background-color: #ccc;
-  color: #666;
+img {
+  width: 150px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  min-width: 45px;
+  height: 40px;
+  padding: 0 12px;
+  background-color: #1e1e2f;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.active {
+  background-color: #ffffff;
+  color: #1e1e2f;
+  border: 2px solid #4f46e5;
+  font-weight: bold;
+}
+
+button:first-child,
+button:last-child {
+  font-weight: 600;
+  padding: 0 16px;
+}
+
+button:disabled {
+  background-color: #e5e5e5;
+  color: #9ca3af;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }

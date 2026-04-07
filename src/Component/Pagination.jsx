@@ -26,6 +26,7 @@ const Pagination = () => {
   return (
     <>
       <div>
+        <h2 className="title">Image Gallery Pagination</h2>
         <div className="image-container">
           {images.map((image, index) => (
             <img key={index} src={image.download_url} alt={`Image ${index}`} />
@@ -34,11 +35,14 @@ const Pagination = () => {
 
         <div className="buttons">
           <button onClick={() => setPageNo(pageNo - 1)} disabled={pageNo === 1}>
-            {" "}
-            Prev{" "}
+            Prev
           </button>
           {margedButtons.map((currentButton) => (
-            <button onClick={() => setPageNo(currentButton)} key={currentButton} className={currentButton === pageNo ? "active" : ""}>
+            <button
+              onClick={() => setPageNo(currentButton)}
+              key={currentButton}
+              className={currentButton === pageNo ? "active" : ""}
+            >
               {currentButton}
             </button>
           ))}
